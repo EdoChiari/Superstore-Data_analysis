@@ -1,7 +1,8 @@
 ---
 title: "Superstore_project"
-output: html_document
+output: github_document
 date: "2024-08-14"
+always_allow_html: true
 ---
 
 ```{r setup, include=FALSE}
@@ -531,26 +532,3 @@ bar_chart_segment <- ggplot(segment_counts, aes(x = Segment, y = n, fill = Segme
 grid.arrange(pie_chart_segment, bar_chart_segment, ncol = 2)
 ```
 
-#### Words Cloud of Product names
-```{r}
-# Convert 'Product.Name' column to UTF-8 encoding
-data$Product.Name <- iconv(data$Product.Name, from = "latin1", to = "UTF-8")
-
-# Convert the Product.Name column to a vector of words
-product_names <- tolower(data$Product.Name)  # Convert to lowercase
-product_names <- removePunctuation(product_names)  # Remove punctuation
-product_names <- removeNumbers(product_names)  # Remove numbers
-product_names <- stripWhitespace(product_names)  # Remove extra whitespace
-
-# Create a corpus and a term-document matrix
-corpus <- Corpus(VectorSource(product_names))
-tdm <- TermDocumentMatrix(corpus)
-matrix <- as.matrix(tdm)
-word_freqs <- sort(rowSums(matrix), decreasing=TRUE)
-df_word_freqs <- data.frame(word = names(word_freqs), freq = word_freqs)
-```
-
-```{r, echo=FALSE}
-# Generate the word cloud
-wordcloud2(data = df_word_freqs, size = 1.5, color = "random-light", backgroundColor = "white")
-```
