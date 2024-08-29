@@ -1,10 +1,6 @@
 
 # Superstore Sales R-Project
 
-Project Overview
-
-This project analyzes a comprehensive dataset from a Superstore to provide actionable business insights aimed at enhancing profitability and market presence. The dataset includes detailed records of sales transactions across various regions, cities, product categories, and customer segments. Through this analysis, we explore trends in sales, profit, and discounting strategies, and identify key areas for strategic improvement.
-
 Dataset Description
 
 The dataset consists of several variables that capture different aspects of the Superstore’s operations:
